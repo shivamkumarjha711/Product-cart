@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <style>
+        img {
+            height: 200px;
+            width: 200px;
+        }
+        button {
+            cursor: pointer;
+        }
+
+        #products, #cartitem {
+            display: flex;
+            justify-content: space-evenly;
+
+        }
+        #heading {
+
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading">Products</h1>
+    <div id="products">
+        
+    </div>
+    <h1 class="heading">Cart Item</h1>
+    <div id="cartitem">
+
+    </div>
+</body>
+<script>
+    const cartItem = document.getElementById("cartitem");
+    const Product = document.getElementById("products");
+
+    const productsData = ["product1", "product2", "product3"];
+    const cartData = []
+
+    function displayProduct() {
+        productsData.forEach((el) => {
+            const productItem = document.createElement("div")
+            const Price = document.createElement("h1")
+            const productName = document.createElement("p")
+            const productImage = document.createElement("img")
+            const addtoCart = document.createElement("button")
+            productName.innerText = el;
+            productImage.src = "https://www.wordstream.com/wp-content/uploads/2021/07/product-photography-lead-image_800x_0.jpg"
+            Price.innerText = "999"
+            addtoCart.innerText = "Add to Cart"
+            addtoCart.addEventListener("click", () => {
+                alert(el)
+                cartData.push(el);
+                displayCart();
+            })
+            productItem.append(productImage,productName,Price,addtoCart)
+            Product.append(productItem)
+        })
+    }
+
+
+    function displayCart() {
+        cartItem.innerHTML = ""
+        cartData.forEach((el) => {
+            const productItem = document.createElement("div")
+            const Price = document.createElement("h1")
+            const productName = document.createElement("p")
+            const productImage = document.createElement("img")
+            const addtoCart = document.createElement("button")
+            productName.innerText = el;
+            productImage.src = "https://www.wordstream.com/wp-content/uploads/2021/07/product-photography-lead-image_800x_0.jpg"
+            Price.innerText = "999"
+            addtoCart.innerText = "Buy"
+            productItem.append(productImage,productName,Price,addtoCart)
+            cartItem.append(productItem)
+        })
+    }
+
+    displayProduct();
+</script>
+</html>
